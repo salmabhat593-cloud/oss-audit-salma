@@ -1,6 +1,6 @@
 Student Details
-Name: Anzal Khan
-Registration No.- 24BEY10011 Course: Open Source Software
+Name: Sakma Farooq
+Registration No.- 24BEY10025 Course: Open Source Software
 Software Chosen: Python
 
 Project Description
