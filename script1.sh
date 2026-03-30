@@ -1,5 +1,5 @@
  #!/bin/bash#Script 1: System Identity Report
-# Author: Your Name
+# Author: Salma Farooq
 
 STUDENT_NAME="Salma Farooq"
 SOFTWARE_CHOICE="Python"
