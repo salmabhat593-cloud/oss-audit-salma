@@ -1,30 +1,27 @@
 #!/bin/bash
+# Script 3: Disk and Permission Auditor
 
-PACKAGE="python3"
+DIRS="/etc /var/log /home /usr/bin /tmp"
 
-echo "Checking package: $PACKAGE"
-echo "--------------------------"
+echo "Directory Audit Report"
+echo "----------------------"
 
-if dpkg -l | grep -q python3; then
-    echo "python3 is installed"
-else
-    echo "python3 is NOT installed"
-fi
+for DIR in $DIRS
+do
+    if [ -d "$DIR" ]; then
+        PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
+        SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
+        echo "$DIR => Permissions: $PERMS | Size: $SIZE"
+    else
+        echo "$DIR does not exist"
+    fi
+done
 
 echo ""
-echo "Package Info:"
+echo "Checking Python config directory..."
 
-case $PACKAGE in
-    python3)
-        echo "Python is an open-source programming language"
-        ;;
-    apache2)
-        echo "Apache is a web server"
-        ;;
-    mysql-server)
-        echo "MySQL is a database"
-        ;;
-    *)
-        echo "No info available"
-        ;;
-esac
+if [ -d "/etc/python3" ]; then
+    ls -ld /etc/python3
+else
+    echo "Python config directory not found"
+fi
